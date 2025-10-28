@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+/* Design tokens and global styles */
+:root{
+  --primary:#8d66ff;
+  --accent:#ffb86b;
+  --bg:#f7fbff;
+}
+
+html, body, #root { height: 100%; }
+body { font-family: Poppins, ui-sans-serif, system-ui, sans-serif; background: var(--bg); color: #0f172a; }
+* { -webkit-tap-highlight-color: transparent; }

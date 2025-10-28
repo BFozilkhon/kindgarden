@@ -1,0 +1,33 @@
+{
+  "groups": [{ "id": "g1", "name": "Sunflowers" }, { "id": "g2", "name": "Rainbows" }],
+  "kids": [
+    { "id": "k1", "name": "Ali",   "avatar": "/assets/avatars/ali.svg",   "groupId": "g1", "coins": 12, "nominations": ["Most Active"], "stats": { "wins": 2, "played": 4 } },
+    { "id": "k2", "name": "Layla", "avatar": "/assets/avatars/layla.svg", "groupId": "g1", "coins": 9,  "nominations": [], "stats": { "wins": 1, "played": 3 } },
+    { "id": "k3", "name": "Misha", "avatar": "/assets/avatars/misha.svg", "groupId": "g2", "coins": 7,  "nominations": [], "stats": { "wins": 1, "played": 2 } },
+    { "id": "k4", "name": "Zoya",  "avatar": "/assets/avatars/zoya.svg",  "groupId": "g1", "coins": 6,  "nominations": [], "stats": { "wins": 0, "played": 2 } },
+    { "id": "k5", "name": "Timur", "avatar": "/assets/avatars/timur.svg", "groupId": "g2", "coins": 5,  "nominations": [], "stats": { "wins": 0, "played": 1 } },
+    { "id": "k6", "name": "Aisha", "avatar": "/assets/avatars/aisha.svg", "groupId": "g1", "coins": 8,  "nominations": [], "stats": { "wins": 1, "played": 2 } },
+    { "id": "k7", "name": "Omar",  "avatar": "/assets/avatars/omar.svg",  "groupId": "g1", "coins": 4,  "nominations": [], "stats": { "wins": 0, "played": 1 } },
+    { "id": "k8", "name": "Sofia", "avatar": "/assets/avatars/sofia.svg", "groupId": "g2", "coins": 3,  "nominations": [], "stats": { "wins": 0, "played": 1 } },
+    { "id": "k9", "name": "Daler", "avatar": "/assets/avatars/daler.svg", "groupId": "g2", "coins": 2,  "nominations": [], "stats": { "wins": 0, "played": 1 } },
+    { "id": "k10", "name": "Nora", "avatar": "/assets/avatars/nora.svg", "groupId": "g1", "coins": 1, "nominations": [], "stats": { "wins": 0, "played": 1 } }
+  ],
+  "languageLessons": [
+    { "id": "l-lang-en-1", "lang": "en", "title": "Fruits - Level 1", "youtubeId": "M7lc1UVf-VE", "words": ["apple", "banana", "grape"], "song": "/assets/audio/fruits_song.mp3" },
+    { "id": "l-lang-en-2", "lang": "en", "title": "Colors - Level 1", "youtubeId": "ysz5S6PUM-U", "words": ["red", "blue", "green"], "song": "/assets/audio/colors_song.mp3" },
+    { "id": "l-lang-uz-1", "lang": "uz", "title": "Mevalar - 1", "youtubeId": "M7lc1UVf-VE", "words": ["olma", "banan", "uzum"], "song": "/assets/audio/fruits_song.mp3" },
+    { "id": "l-lang-uz-2", "lang": "uz", "title": "Ranglar - 1", "youtubeId": "ysz5S6PUM-U", "words": ["qizil", "ko'k", "yashil"], "song": "/assets/audio/colors_song.mp3" },
+    { "id": "l-lang-ru-1", "lang": "ru", "title": "Фрукты - 1", "youtubeId": "M7lc1UVf-VE", "words": ["яблоко", "банан", "виноград"], "song": "/assets/audio/fruits_song.mp3" },
+    { "id": "l-lang-ru-2", "lang": "ru", "title": "Цвета - 1", "youtubeId": "ysz5S6PUM-U", "words": ["красный", "синий", "зеленый"], "song": "/assets/audio/colors_song.mp3" }
+  ],
+  "mathLessons": [
+    { "id": "l-math-1", "title": "Counting Apples", "examples": [ { "text": "5 apples + 2 apples", "visual": ["apple","apple","apple","apple","apple","apple","apple"] } ] },
+    { "id": "l-math-2", "title": "Subtract Balloons", "examples": [ { "text": "6 balloons - 1 balloon", "visual": ["balloon","balloon","balloon","balloon","balloon"] } ] }
+  ],
+  "movementExercises": [
+    { "id": "l-move-1", "title": "Jump and Clap", "frames": ["jump","clap","jump","clap"], "languages": ["en","uz","ru"] },
+    { "id": "l-move-2", "title": "Stretch and Twist", "frames": ["stretch","twist","stretch","twist"], "languages": ["en","uz","ru"] }
+  ]
+}
+
+
