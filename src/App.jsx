@@ -3,14 +3,12 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import LanguageLesson from './pages/LanguageLesson'
-import MathLesson from './pages/MathLesson'
 import MathHome from './pages/MathHome'
 import MathGame from './pages/MathGame'
 import MathResult from './pages/MathResult'
 import MovementExercise from './pages/MovementExercise'
 import Karaoke from './pages/Karaoke'
 import CartoonPlayer from './pages/CartoonPlayer'
-import Competitions from './pages/Competitions'
 import Profile from './pages/Profile'
 import ResultBoard from './pages/ResultBoard'
 import { useKid } from './lib/useKid'
@@ -25,7 +23,6 @@ const routes = {
   '/movement': MovementExercise,
   '/karaoke': Karaoke,
   '/cartoons': CartoonPlayer,
-  '/competitions': Competitions,
   '/profile': Profile,
   '/results': ResultBoard,
 }

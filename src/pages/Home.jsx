@@ -35,7 +35,6 @@ export default function Home(){
           <a href="#/math-home"><Tile>Matematika</Tile></a>
           <a href="#/karaoke"><Tile>Karaoke</Tile></a>
           <a href="#/cartoons"><Tile>Multfilmlar</Tile></a>
-          <a href="#/competitions"><Tile>Musobaqalar</Tile></a>
         </div>
       </section>
 

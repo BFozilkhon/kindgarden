@@ -2,12 +2,14 @@ import { useState } from 'react'
 import Modal from '../components/Modal'
 import BigCTAButton from '../components/BigCTAButton'
 import { getKids, saveLessonResult, getLeaderboard, computeNominations } from '../lib/localDB'
+import { useKid } from '../lib/useKid'
 
 export default function Competitions(){
+  const { teacherId } = useKid()
   const groups = [{ id:'g1', name:'Sunflowers' }, { id:'g2', name:'Rainbows' }]
   const [groupId, setGroupId] = useState('g1')
   const [open, setOpen] = useState(false)
-  const kids = getKids(groupId)
+  const kids = getKids(groupId, teacherId)
 
   const runCompetition = ()=>{
     kids.forEach(k=>{
