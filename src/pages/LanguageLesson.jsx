@@ -6,6 +6,7 @@ import YouTubePlayer from '../components/YouTubePlayer'
 import WordCard from '../components/WordCard'
 import BigCTAButton from '../components/BigCTAButton'
 import { useKid } from '../lib/useKid'
+import { useTranslation } from 'react-i18next'
 
 export default function LanguageLesson(){
   const [lang, setLang] = useState('en')
@@ -14,6 +15,7 @@ export default function LanguageLesson(){
   const [openId, setOpenId] = useState(lessons[0]?.id || null)
   const [selected, setSelected] = useState(null)
   const [quizIdx, setQuizIdx] = useState(0)
+  const { t } = useTranslation('t')
 
   useEffect(()=>{
     // reset selection and quiz index when switching lessons
@@ -72,7 +74,7 @@ export default function LanguageLesson(){
                   <YouTubePlayer youtubeId={lesson.youtubeId} title={lesson.title} />
                 ) : null}
                 <div className="space-y-2">
-                  <h4 className="font-semibold">Quick Quiz</h4>
+                  <h4 className="font-semibold">{t('langLesson.quick')}</h4>
                   {lesson.quiz && lesson.quiz.length ? (
                     <div className="space-y-2">
                       <div className="text-lg font-medium">{lesson.quiz[quizIdx].prompt}</div>
@@ -89,7 +91,7 @@ export default function LanguageLesson(){
                       ))}
                     </div>
                   )}
-                  <BigCTAButton onClick={()=> finishQuiz(lesson)}>{lesson.quiz && lesson.quiz.length && quizIdx<lesson.quiz.length-1 ? 'Next' : 'Submit'}</BigCTAButton>
+                  <BigCTAButton onClick={()=> finishQuiz(lesson)}>{lesson.quiz && lesson.quiz.length && quizIdx<lesson.quiz.length-1 ? t('langLesson.next') : t('langLesson.submit')}</BigCTAButton>
                 </div>
                 {!lesson.quiz && (
                   <div className="text-lg">

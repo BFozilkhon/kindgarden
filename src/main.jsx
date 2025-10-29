@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { seedIfEmpty, maybeResetOnLoad, scheduleResetOnNextLoad } from './lib/localDB'
+import './lib/i18nConfig'
 
 // One-time reset logic (safe for production rollouts)
 maybeResetOnLoad()

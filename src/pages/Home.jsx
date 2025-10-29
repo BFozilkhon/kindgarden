@@ -8,11 +8,13 @@ import elza from '../assets/elza.png'
 import buzz from '../assets/buzz.png'
 import moana from '../assets/moana.png'
 import { useKid } from '../lib/useKid'
+import { useTranslation } from 'react-i18next'
 import { getLeaderboard } from '../lib/localDB'
 
 export default function Home(){
   const { currentKid } = useKid()
   const lb = currentKid ? getLeaderboard(currentKid.groupId) : []
+  const { t } = useTranslation('t')
 
   return (
     <div className="space-y-8">
@@ -21,30 +23,30 @@ export default function Home(){
         <div className="absolute -bottom-16 -right-16 w-72 h-72 rounded-full bg-[color:rgb(255_184_107_/_.25)] blur-2xl" />
         <div className="grid md:grid-cols-2 gap-6 items-center relative">
           <div>
-            <h1 className="text-3xl md:text-5xl font-extrabold mb-3">KindGarden ga xush kelibsiz</h1>
-            <p className="text-slate-600 mb-5">Quvnoq darslar, qo‘shiqlar va harakatlar bilan xursand o‘rganish.</p>
+            <h1 className="text-3xl md:text-5xl font-extrabold mb-3">{t('home.title')}</h1>
+            <p className="text-slate-600 mb-5">{t('home.subtitle')}</p>
             <div className="flex gap-3 flex-wrap">
-              <a href="#/language"><BigCTAButton ariaLabel="Tilni boshlash">Tilni boshlash</BigCTAButton></a>
-              <a href="#/math-home"><BigCTAButton ariaLabel="Matematikani boshlash">Matematikani boshlash</BigCTAButton></a>
+              <a href="#/language"><BigCTAButton ariaLabel={t('home.startLanguage')}>{t('home.startLanguage')}</BigCTAButton></a>
+              <a href="#/math-home"><BigCTAButton ariaLabel={t('home.startMath')}>{t('home.startMath')}</BigCTAButton></a>
             </div>
           </div>
           <HeroCollage />
         </div>
         <div className="mt-6 grid grid-cols-2 md:grid-cols-3 gap-3">
-          <a href="#/language"><Tile>Til</Tile></a>
-          <a href="#/math-home"><Tile>Matematika</Tile></a>
-          <a href="#/karaoke"><Tile>Karaoke</Tile></a>
-          <a href="#/cartoons"><Tile>Multfilmlar</Tile></a>
+          <a href="#/language"><Tile>{t('home.tileLanguage')}</Tile></a>
+          <a href="#/math-home"><Tile>{t('home.tileMath')}</Tile></a>
+          <a href="#/karaoke"><Tile>{t('home.tileKaraoke')}</Tile></a>
+          <a href="#/cartoons"><Tile>{t('home.tileCartoons')}</Tile></a>
         </div>
       </section>
 
       <section className="grid md:grid-cols-2 gap-6">
         <div className="bg-white rounded-2xl shadow p-4">
-          <h2 className="text-2xl font-bold mb-3">Reyting</h2>
+          <h2 className="text-2xl font-bold mb-3">{t('home.leaderboard')}</h2>
           <Leaderboard items={lb} />
         </div>
         <div className="bg-white rounded-2xl shadow p-4">
-          <h2 className="text-2xl font-bold mb-3">Kundalik topshiriq</h2>
+          <h2 className="text-2xl font-bold mb-3">{t('home.daily')}</h2>
           <DailyQuest />
         </div>
       </section>

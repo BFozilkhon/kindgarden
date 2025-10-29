@@ -23,6 +23,24 @@ export const mathData = {
   numberLine: [
     { seq: [3,4,5,null,7], options: [3,6,8], correct: 6 },
     { seq: [1,2,null,4,5], options: [0,3,6], correct: 3 },
-  ]
+  ],
+  // Learn modes
+  colors: [
+    { name: "Qizil", hex: "#e74c3c" },
+    { name: "Ko'k", hex: "#4f46e5" },
+    { name: "Yashil", hex: "#22c55e" },
+    { name: "Sariq", hex: "#f59e0b" },
+    { name: "Oq", hex: "#ffffff", text:'#0f172a' },
+    { name: "Qora", hex: "#0f172a", text:'#ffffff' },
+  ],
+  numbers: Array.from({ length: 10 }).map((_,i)=> i+1),
+  animals: [
+    { name: 'It', emoji: '🐶' },
+    { name: 'Mushuk', emoji: '🐱' },
+    { name: 'Sigir', emoji: '🐮' },
+    { name: 'Ot', emoji: '🐴' },
+    { name: 'Qo\'y', emoji: '🐑' },
+    { name: 'Quyon', emoji: '🐰' },
+  ],
 }
 

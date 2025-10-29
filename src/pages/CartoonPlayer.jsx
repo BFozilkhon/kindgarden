@@ -1,4 +1,7 @@
+import { useTranslation } from 'react-i18next'
+
 export default function CartoonPlayer(){
+  const { t } = useTranslation('t')
   const vids = [
     'zt-onoQ3cCo',
     '2uCpwTO7lMc',
@@ -8,7 +11,7 @@ export default function CartoonPlayer(){
   ]
   return (
     <div className="space-y-4">
-      <h2 className="text-2xl font-bold">Multfilmlar</h2>
+      <h2 className="text-2xl font-bold">{t('cartoons.title')}</h2>
       <div className="grid md:grid-cols-2 gap-4">
         {vids.map(id=> (
           <div key={id} className="bg-white rounded-2xl shadow p-2">

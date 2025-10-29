@@ -47,7 +47,7 @@ export default function App(){
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      <main className="flex-1 p-4 md:p-6 max-w-6xl mx-auto w-full">
+      <main className="flex-1 p-4 md:p-6 max-w-7xl mx-auto w-full">
         <Current key={hashStr} currentKid={currentKid} />
       </main>
       <Footer />

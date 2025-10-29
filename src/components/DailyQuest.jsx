@@ -1,9 +1,11 @@
 import { useMemo, useState } from 'react'
 import BigCTAButton from './BigCTAButton'
 import { useKid } from '../lib/useKid'
+import { useTranslation } from 'react-i18next'
 import { awardCoins } from '../lib/coins'
 
 export default function DailyQuest(){
+  const { t } = useTranslation('t')
   const todayKey = useMemo(()=>{
     const d = new Date();
     return `kg_daily_${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}`
@@ -31,12 +33,12 @@ export default function DailyQuest(){
   return (
     <div className="space-y-3">
       <ul className="space-y-2">
-        <QuestItem label="Til videosini ko‘rish" done={state.lang} onToggle={()=>update({ lang: !state.lang })} icon="📚" />
-        <QuestItem label="3 ta matematika masalasini yechish" done={state.math} onToggle={()=>update({ math: !state.math })} icon="🔢" />
+        <QuestItem label={t('daily.watchLang')} done={state.lang} onToggle={()=>update({ lang: !state.lang })} icon="📚" />
+        <QuestItem label={t('daily.solveMath')} done={state.math} onToggle={()=>update({ math: !state.math })} icon="🔢" />
       </ul>
       <div className="flex items-center justify-between">
-        <span className="text-slate-600 text-sm">Mukofot: 5 🪙</span>
-        <BigCTAButton onClick={claim} ariaLabel="Mukofotni olish">{state.claimed? 'Olib bo‘lingan ✓' : 'Mukofotni olish'}</BigCTAButton>
+        <span className="text-slate-600 text-sm">{t('daily.rewardLabel', { n: 5 })}</span>
+        <BigCTAButton onClick={claim} ariaLabel={t('daily.claim')}>{state.claimed? t('daily.claimed') : t('daily.claim')}</BigCTAButton>
       </div>
     </div>
   )

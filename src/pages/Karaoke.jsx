@@ -1,4 +1,7 @@
+import { useTranslation } from 'react-i18next'
+
 export default function Karaoke(){
+  const { t } = useTranslation('t')
   // We now only show curated karaoke videos to avoid clutter from lesson words
   const songs = []
   const curated = [
@@ -9,9 +12,9 @@ export default function Karaoke(){
   ]
   return (
     <div className="space-y-4">
-      <h2 className="text-2xl font-bold">Karaoke</h2>
+      <h2 className="text-2xl font-bold">{t('karaoke.title')}</h2>
       <div className="space-y-2">
-        <h3 className="text-xl font-semibold">Tavsiya etilgan karaoke</h3>
+        <h3 className="text-xl font-semibold">{t('karaoke.curated')}</h3>
         <div className="grid md:grid-cols-2 gap-4">
           {curated.map(s=> (
             <div key={s.id} className="bg-white rounded-2xl shadow p-4 space-y-2">
