@@ -17,8 +17,8 @@ export default function Header(){
     <header className="bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] text-white shadow-md">
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
         <a href="#/" className="flex items-center gap-2">
-          <img src={logo} alt="KindGarden logo" className="w-18 h-18 scale-[1.2] rounded" />
-          <span className="text-2xl font-extrabold tracking-wide">KindGarden</span>
+          <img src={logo} alt="Bolajon logo" className="w-18 h-18 scale-[1.2] rounded" />
+          <span className="text-2xl font-extrabold tracking-wide">Bolajon</span>
         </a>
         <nav className="hidden md:flex gap-4">
           <a className="hover:underline" href="#/language">{t('nav.language')}</a>

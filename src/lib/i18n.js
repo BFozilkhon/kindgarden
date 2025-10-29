@@ -1,6 +1,6 @@
 const packs = {
   en: {
-    home: { title: 'Welcome to KindGarden', language:'Language', math:'Math', movement:'Movement', karaoke:'Karaoke', cartoons:'Cartoons', competitions:'Competitions', results:'Results', profile:'Profile' },
+    home: { title: 'Welcome to Bolajon', language:'Language', math:'Math', movement:'Movement', karaoke:'Karaoke', cartoons:'Cartoons', competitions:'Competitions', results:'Results', profile:'Profile' },
     coins: 'Coins',
     selectChild: 'Choose Child',
     play: 'Play',
@@ -8,7 +8,7 @@ const packs = {
     didIt: "I did it!",
   },
   uz: {
-    home: { title: 'KindGarden ga xush kelibsiz', language:'Til', math:'Matematika', movement:'Harakat', karaoke:'Karaoke', cartoons:'Multfilmlar', competitions:'Musobaqalar', results:'Natijalar', profile:'Profil' },
+    home: { title: 'Bolajon ga xush kelibsiz', language:'Til', math:'Matematika', movement:'Harakat', karaoke:'Karaoke', cartoons:'Multfilmlar', competitions:'Musobaqalar', results:'Natijalar', profile:'Profil' },
     coins: 'Tanga',
     selectChild: 'Bola tanlang',
     play: 'Boshlash',
@@ -16,7 +16,7 @@ const packs = {
     didIt: "Bajardim!",
   },
   ru: {
-    home: { title: 'Добро пожаловать в KindGarden', language:'Язык', math:'Математика', movement:'Движение', karaoke:'Караоке', cartoons:'Мультфильмы', competitions:'Соревнования', results:'Результаты', profile:'Профиль' },
+    home: { title: 'Добро пожаловать в Bolajon', language:'Язык', math:'Математика', movement:'Движение', karaoke:'Караоке', cartoons:'Мультфильмы', competitions:'Соревнования', results:'Результаты', profile:'Профиль' },
     coins: 'Монеты',
     selectChild: 'Выбрать ребёнка',
     play: 'Играть',

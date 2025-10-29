@@ -7,7 +7,7 @@ const resources = {
   uz: {
     t: {
       nav: { language:'Til', math:'Matematika', karaoke:'Karaoke', cartoons:'Multfilmlar', results:'Natijalar', profile:'Profil', selectTeacher:'Tarbiyachi tanlang', selectChild:'Bola tanlang' },
-      home: { title:'KindGarden ga xush kelibsiz', subtitle:"Quvnoq darslar, qo‘shiqlar va harakatlar bilan xursand o‘rganish.", startLanguage:'Tilni boshlash', startMath:'Matematikani boshlash', tileLanguage:'Til', tileMath:'Matematika', tileKaraoke:'Karaoke', tileCartoons:'Multfilmlar', leaderboard:'Reyting', daily:'Kundalik topshiriq' },
+      home: { title:'Bolajon ga xush kelibsiz', subtitle:"Quvnoq darslar, qo‘shiqlar va harakatlar bilan xursand o‘rganish.", startLanguage:'Tilni boshlash', startMath:'Matematikani boshlash', tileLanguage:'Til', tileMath:'Matematika', tileKaraoke:'Karaoke', tileCartoons:'Multfilmlar', leaderboard:'Reyting', daily:'Kundalik topshiriq' },
       daily: { watchLang:'Til videosini ko‘rish', solveMath:'3 ta matematika masalasini yechish', rewardLabel:'Mukofot: {{n}} 🪙', claim:'Mukofotni olish', claimed:'Olib bo‘lingan ✓' },
       karaoke: { title:'Karaoke', curated:'Tavsiya etilgan karaoke' },
       profile: { title:'Profil', name:'Ism', group:'Guruh', save:'Saqlash', noChild:'Bosh qismdan bolani tanlang.' },
@@ -22,7 +22,7 @@ const resources = {
   en: {
     t: {
       nav: { language:'Language', math:'Math', karaoke:'Karaoke', cartoons:'Cartoons', results:'Results', profile:'Profile', selectTeacher:'Select teacher', selectChild:'Select child' },
-      home: { title:'Welcome to KindGarden', subtitle:'Playful lessons, songs, and movements for joyful learning.', startLanguage:'Start Language', startMath:'Start Math', tileLanguage:'Language', tileMath:'Math', tileKaraoke:'Karaoke', tileCartoons:'Cartoons', leaderboard:'Leaderboard', daily:'Daily Quest' },
+      home: { title:'Welcome to Bolajon', subtitle:'Playful lessons, songs, and movements for joyful learning.', startLanguage:'Start Language', startMath:'Start Math', tileLanguage:'Language', tileMath:'Math', tileKaraoke:'Karaoke', tileCartoons:'Cartoons', leaderboard:'Leaderboard', daily:'Daily Quest' },
       daily: { watchLang:'Watch a Language video', solveMath:'Solve 3 Math problems', rewardLabel:'Reward: {{n}} 🪙', claim:'Claim Reward', claimed:'Claimed ✓' },
       karaoke: { title:'Karaoke', curated:'Recommended karaoke' },
       profile: { title:'Profile', name:'Name', group:'Group', save:'Save', noChild:'Select a child in the header.' },
@@ -37,7 +37,7 @@ const resources = {
   ru: {
     t: {
       nav: { language:'Язык', math:'Математика', karaoke:'Караоке', cartoons:'Мультфильмы', results:'Результаты', profile:'Профиль', selectTeacher:'Выберите воспитателя', selectChild:'Выберите ребёнка' },
-      home: { title:'Добро пожаловать в KindGarden', subtitle:'Весёлые уроки, песни и движения для радостного обучения.', startLanguage:'Начать язык', startMath:'Начать математику', tileLanguage:'Язык', tileMath:'Математика', tileKaraoke:'Караоке', tileCartoons:'Мультфильмы', leaderboard:'Рейтинг', daily:'Ежедневное задание' },
+      home: { title:'Добро пожаловать в Bolajon', subtitle:'Весёлые уроки, песни и движения для радостного обучения.', startLanguage:'Начать язык', startMath:'Начать математику', tileLanguage:'Язык', tileMath:'Математика', tileKaraoke:'Караоке', tileCartoons:'Мультфильмы', leaderboard:'Рейтинг', daily:'Ежедневное задание' },
       daily: { watchLang:'Посмотреть видео по языку', solveMath:'Решить 3 задания по математике', rewardLabel:'Награда: {{n}} 🪙', claim:'Забрать награду', claimed:'Получено ✓' },
       karaoke: { title:'Караоке', curated:'Рекомендуемое караоке' },
       profile: { title:'Профиль', name:'Имя', group:'Группа', save:'Сохранить', noChild:'Выберите ребёнка вверху.' },
