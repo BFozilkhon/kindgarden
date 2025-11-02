@@ -5,7 +5,10 @@ function ordinal(n){
 
 export function formatDateTime(ts, lang='uz'){
   const d = new Date(ts)
-  const month = new Intl.DateTimeFormat(lang, { month:'long' }).format(d)
+  const uzMonths = ['yanvar','fevral','mart','aprel','may','iyun','iyul','avgust','sentyabr','oktyabr','noyabr','dekabr']
+  const month = lang && lang.startsWith('uz')
+    ? uzMonths[d.getMonth()]
+    : new Intl.DateTimeFormat(lang, { month:'long' }).format(d)
   const year = d.getFullYear()
   const day = d.getDate()
   const time = `${pad(d.getHours())}:${pad(d.getMinutes())}`

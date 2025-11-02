@@ -14,12 +14,21 @@ export default function Profile(){
   const groups = [{ id:'g1', name:'Quyoshlar' }, { id:'g2', name:'Kamalaklar' }]
   const kids = getKids()
 
-  // sync local state when header selection changes
+  // Only resync when the selected kid ID changes (avoid resetting while typing)
   useEffect(()=>{
     setName(currentKid?.name || '')
     setAvatar(currentKid?.avatar || '')
     setGroupId(currentKid?.groupId || 'g1')
-  }, [currentKid])
+  }, [currentKid?.id])
+
+  // Auto-save avatar changes immediately (so uploaded image persists)
+  useEffect(()=>{
+    if (!currentKid) return
+    if (avatar && avatar !== currentKid.avatar){
+      updateKid(currentKid.id, { avatar })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [avatar, currentKid?.id])
 
   const save = ()=>{
     if (!currentKid) return

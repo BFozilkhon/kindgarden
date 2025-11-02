@@ -3,6 +3,8 @@ import { useKid } from '../lib/useKid'
 import { getKids, getCoinHistory } from '../lib/localDB'
 import { formatDateTime } from '../lib/date'
 import { useTranslation } from 'react-i18next'
+import BarChartSimple from '../components/BarChartSimple'
+import RadialGauge from '../components/RadialGauge'
 
 export default function Stats(){
   const { t, i18n } = useTranslation('t')
@@ -11,6 +13,16 @@ export default function Stats(){
   const top = useMemo(()=> kids.slice().sort((a,b)=>(b.coins||0)-(a.coins||0)).slice(0,3), [kids])
   const rest = useMemo(()=> kids.filter(k=> !top.find(x=>x.id===k.id)), [kids, top])
   const nominations = [t('stats.mostActive')||'Eng faol', t('stats.fastLearner')||'Tez o‘rganuvchi', t('stats.creative')||'Ijodkor']
+
+  const top5 = useMemo(()=> kids.slice().sort((a,b)=>(b.coins||0)-(a.coins||0)).slice(0,5), [kids])
+  const series = top5.map(k=> ({ label: k.name, value: k.coins || 0 }))
+  const totals = useMemo(()=>{
+    const totalCoins = kids.reduce((s,k)=> s + (k.coins||0), 0)
+    const totalWins = kids.reduce((s,k)=> s + (k.stats?.wins||0), 0)
+    const totalPlayed = kids.reduce((s,k)=> s + (k.stats?.played||0), 0)
+    const winRate = totalPlayed ? Math.round((totalWins/totalPlayed)*100) : 0
+    return { totalCoins, totalWins, totalPlayed, winRate }
+  }, [kids])
 
   return (
     <div className="space-y-6">
@@ -28,6 +40,28 @@ export default function Stats(){
             </li>
           ))}
         </ol>
+      </div>
+      <div className="bg-white rounded-2xl shadow p-4">
+        <h3 className="font-semibold mb-3">{t('stats.coinsDistribution')}</h3>
+        <BarChartSimple data={series} valueSuffix="" />
+      </div>
+      <div className="bg-white rounded-2xl shadow p-4">
+        <h3 className="font-semibold mb-3">{t('stats.performance')}</h3>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 items-center">
+          <RadialGauge percent={totals.winRate} label={t('stats.winRate')} />
+          <div className="text-center">
+            <div className="text-3xl font-bold">{totals.totalCoins}</div>
+            <div className="text-slate-600">{t('stats.totalCoins')}</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl font-bold">{totals.totalWins}</div>
+            <div className="text-slate-600">{t('stats.wins')}</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl font-bold">{totals.totalPlayed}</div>
+            <div className="text-slate-600">{t('stats.gamesPlayed')}</div>
+          </div>
+        </div>
       </div>
       <div className="bg-white rounded-2xl shadow p-4">
         <h3 className="font-semibold mb-2">{t('stats.nominations')}</h3>
