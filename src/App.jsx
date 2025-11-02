@@ -10,7 +10,9 @@ import MovementExercise from './pages/MovementExercise'
 import Karaoke from './pages/Karaoke'
 import CartoonPlayer from './pages/CartoonPlayer'
 import Profile from './pages/Profile'
-import ResultBoard from './pages/ResultBoard'
+import Stats from './pages/Stats'
+import Competitions from './pages/Competitions'
+import CompetitionGame from './pages/CompetitionGame'
 import { useKid } from './lib/useKid'
 
 const routes = {
@@ -21,10 +23,13 @@ const routes = {
   '/math-game': MathGame,
   '/math-results': MathResult,
   '/movement': MovementExercise,
+  '/competitions': Competitions,
+  '/competition': CompetitionGame,
   '/karaoke': Karaoke,
   '/cartoons': CartoonPlayer,
+  '/stats': Stats,
   '/profile': Profile,
-  '/results': ResultBoard,
+  '/results': Stats,
 }
 
 function getRoutePath(){

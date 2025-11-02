@@ -32,11 +32,13 @@ export default function Home(){
           </div>
           <HeroCollage />
         </div>
-        <div className="mt-6 grid grid-cols-2 md:grid-cols-3 gap-3">
+        <div className="mt-6 grid grid-cols-3 gap-3">
           <a href="#/language"><Tile>{t('home.tileLanguage')}</Tile></a>
           <a href="#/math-home"><Tile>{t('home.tileMath')}</Tile></a>
           <a href="#/karaoke"><Tile>{t('home.tileKaraoke')}</Tile></a>
           <a href="#/cartoons"><Tile>{t('home.tileCartoons')}</Tile></a>
+          <a href="#/competitions"><Tile>{t('home.tileCompetitions')}</Tile></a>
+          <a href="#/movement"><Tile>{t('home.tileMovement')}</Tile></a>
         </div>
       </section>
 

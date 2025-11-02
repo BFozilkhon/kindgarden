@@ -15,7 +15,7 @@ export default function Header(){
 
   return (
     <header className="bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] text-white shadow-md">
-      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
+      <div className="max-w-[1600px] mx-auto px-4 py-3 flex items-center justify-between gap-3">
         <a href="#/" className="flex items-center gap-2">
           <img src={logo} alt="Bolajon logo" className="w-18 h-18 scale-[1.2] rounded" />
           <span className="text-2xl font-extrabold tracking-wide">Bolajon</span>
@@ -23,9 +23,11 @@ export default function Header(){
         <nav className="hidden md:flex gap-4">
           <a className="hover:underline" href="#/language">{t('nav.language')}</a>
           <a className="hover:underline" href="#/math-home">{t('nav.math')}</a>
+          <a className="hover:underline" href="#/movement">{t('nav.movement')}</a>
           <a className="hover:underline" href="#/karaoke">{t('nav.karaoke')}</a>
           <a className="hover:underline" href="#/cartoons">{t('nav.cartoons')}</a>
-          <a className="hover:underline" href="#/results">{t('nav.results')}</a>
+          <a className="hover:underline" href="#/competitions">{t('nav.competitions')}</a>
+          <a className="hover:underline" href="#/stats">{t('nav.stats')}</a>
           <a className="hover:underline" href="#/profile">{t('nav.profile')}</a>
         </nav>
         <div className="hidden md:flex items-center gap-2">
@@ -53,18 +55,28 @@ export default function Header(){
           <button className="bg-white/20 px-3 py-2 rounded-full" aria-label="Menu" onClick={()=> setOpen(o=>!o)}>☰</button>
         </div>
       </div>
-      {open && (
-        <div className="md:hidden px-4 pb-2 text-sm">
-          <div className="flex gap-3 overflow-x-auto">
-            <a href="#/language">{t('nav.language')}</a>
-            <a href="#/math-home">{t('nav.math')}</a>
-            <a href="#/karaoke">{t('nav.karaoke')}</a>
-            <a href="#/cartoons">{t('nav.cartoons')}</a>
-            <a href="#/results">{t('nav.results')}</a>
-            <a href="#/profile">{t('nav.profile')}</a>
+      {/* Mobile Right Drawer */}
+      <div className={`md:hidden fixed inset-0 z-40 transition ${open ? 'pointer-events-auto' : 'pointer-events-none'}`} aria-hidden={!open}>
+        {/* Backdrop */}
+        <div onClick={()=>setOpen(false)} className={`absolute inset-0 bg-black/30 transition-opacity ${open?'opacity-100':'opacity-0'}`} />
+        {/* Drawer Panel */}
+        <div className={`absolute right-0 top-0 h-full w-72 bg-white text-slate-900 shadow-xl transition-transform ${open?'translate-x-0':'translate-x-full'}`} role="dialog" aria-modal="true">
+          <div className="p-4 border-b flex items-center justify-between">
+            <span className="font-extrabold text-lg">Menu</span>
+            <button onClick={()=>setOpen(false)} aria-label="Close" className="px-3 py-1 rounded-full bg-slate-100">✕</button>
           </div>
+          <nav className="p-4 grid gap-3 text-base">
+            <a onClick={()=>setOpen(false)} className="px-3 py-2 rounded-lg hover:bg-slate-100" href="#/language">{t('nav.language')}</a>
+            <a onClick={()=>setOpen(false)} className="px-3 py-2 rounded-lg hover:bg-slate-100" href="#/math-home">{t('nav.math')}</a>
+            <a onClick={()=>setOpen(false)} className="px-3 py-2 rounded-lg hover:bg-slate-100" href="#/movement">{t('nav.movement')}</a>
+            <a onClick={()=>setOpen(false)} className="px-3 py-2 rounded-lg hover:bg-slate-100" href="#/karaoke">{t('nav.karaoke')}</a>
+            <a onClick={()=>setOpen(false)} className="px-3 py-2 rounded-lg hover:bg-slate-100" href="#/cartoons">{t('nav.cartoons')}</a>
+            <a onClick={()=>setOpen(false)} className="px-3 py-2 rounded-lg hover:bg-slate-100" href="#/competitions">{t('nav.competitions')}</a>
+            <a onClick={()=>setOpen(false)} className="px-3 py-2 rounded-lg hover:bg-slate-100" href="#/stats">{t('nav.stats')}</a>
+            <a onClick={()=>setOpen(false)} className="px-3 py-2 rounded-lg hover:bg-slate-100" href="#/profile">{t('nav.profile')}</a>
+          </nav>
         </div>
-      )}
+      </div>
       <div className="md:hidden border-t border-white/10 px-4 py-2 flex items-center gap-2 overflow-x-auto">
         <select
           aria-label={t('nav.selectTeacher')}

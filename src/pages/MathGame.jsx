@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { useKid } from '../lib/useKid'
 import { addCoins, getMathProgress, saveMathResult } from '../lib/useMathDB'
+import { saveLessonResult } from '../lib/localDB'
 import { mathData } from '../data/mathData'
 import MathVisual from '../components/MathVisual'
 import MathQuestion from '../components/MathQuestion'
@@ -25,7 +26,7 @@ export default function MathGame(){
   const [idx, setIdx] = useState(0)
   const [confetti, setConfetti] = useState(false)
   const progress = getMathProgress(currentKid?.id || 'anon')
-  const coins = progress.totalCoins || 0
+  const coins = currentKid?.coins || 0
   const { t } = useTranslation('t')
   const isLearn = ['colors','numbers','animals'].includes(game)
 
@@ -44,9 +45,9 @@ export default function MathGame(){
     if (game==='counting') return q.options
     if (game==='addition') return q.options
     if (game==='subtraction') return q.options
-    if (game==='comparison') return ['Left','Right','Equal']
+    if (game==='comparison') return [t('compare.left'), t('compare.right'), t('compare.equal')]
     if (game==='numberLine') return q.options
-    if (game==='shapes') return q.options
+    if (game==='shapes') return [t('shapes.circle'), t('shapes.square'), t('shapes.triangle')]
     return []
   }, [q, game])
 
@@ -55,11 +56,15 @@ export default function MathGame(){
     if (game==='addition') return selected === q.correct
     if (game==='subtraction') return selected === q.correct
     if (game==='comparison'){
-      if (q.left===q.right) return selected==='Equal'
-      return (q.left>q.right && selected==='Left') || (q.right>q.left && selected==='Right')
+      const L=t('compare.left'), R=t('compare.right'), E=t('compare.equal')
+      if (q.left===q.right) return selected===E
+      return (q.left>q.right && selected===L) || (q.right>q.left && selected===R)
     }
     if (game==='numberLine') return selected === q.correct
-    if (game==='shapes') return selected === q.target
+    if (game==='shapes'){
+      const map = { [t('shapes.circle')]:'circle', [t('shapes.square')]:'square', [t('shapes.triangle')]:'triangle' }
+      return map[selected] === q.target
+    }
     return false
   }
 
@@ -69,7 +74,9 @@ export default function MathGame(){
     const ok = isCorrect(selected)
     saveMathResult(currentKid?.id || 'anon', game, ok)
     if (ok){
-      addCoins(currentKid?.id || 'anon', rewardMap[game] || 2)
+      const reward = rewardMap[game] || 2
+      addCoins(currentKid?.id || 'anon', reward)
+      if (currentKid?.id) saveLessonResult(currentKid.id, `math:${game}`, { coins: reward, correct:1, incorrect:0 })
       if (((getMathProgress(currentKid?.id || 'anon').games[game]?.score||0) % 5) === 0){
         setConfetti(true)
       }
@@ -108,7 +115,7 @@ export default function MathGame(){
         <div className="flex items-center justify-between">
           <button className="px-4 py-2 bg-white rounded-full shadow" onClick={back}>← {t('misc.back')}</button>
           <div className="font-semibold">{currentKid?.name || 'Guest'}</div>
-          <CoinDisplay coins={coins} />
+          <CoinDisplay coins={currentKid?.coins || 0} />
         </div>
         <h2 className="text-2xl md:text-3xl font-extrabold text-center">{title}</h2>
         <div className="flex items-center justify-center">
@@ -147,7 +154,7 @@ export default function MathGame(){
       <div className="flex items-center justify-between">
         <button className="px-4 py-2 bg-white rounded-full shadow" onClick={back}>← {t('misc.back')}</button>
         <div className="font-semibold">{currentKid?.name || t('misc.guest')}</div>
-        <CoinDisplay coins={coins} />
+        <CoinDisplay coins={currentKid?.coins || 0} />
       </div>
       <div className="bg-white rounded-3xl shadow p-6 space-y-4">
         <h2 className="text-2xl font-bold text-center capitalize">{(

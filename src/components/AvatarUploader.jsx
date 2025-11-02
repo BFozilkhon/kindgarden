@@ -1,6 +1,8 @@
 import { useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 
 export default function AvatarUploader({ value, onChange }){
+  const { t } = useTranslation('t')
   const ref = useRef(null)
   const choose = ()=> ref.current?.click()
 
@@ -18,7 +20,7 @@ export default function AvatarUploader({ value, onChange }){
         alt="Avatar preview"
         className="w-16 h-16 rounded-full object-cover bg-white shadow"
       />
-      <button className="px-4 py-2 bg-[var(--accent)] text-white rounded-full shadow" onClick={choose}>Upload</button>
+      <button className="px-4 py-2 bg-[var(--accent)] text-white rounded-full shadow" onClick={choose}>{t('profile.upload')}</button>
       <input
         ref={ref}
         type="file"

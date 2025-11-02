@@ -21,6 +21,7 @@ function getDb(){
 }
 function setDb(db){
   localStorage.setItem(DB_KEY, JSON.stringify(db))
+  try { window.dispatchEvent(new Event('kg_db_updated')) } catch {}
 }
 
 /** One-time/hard reset helpers */
@@ -113,8 +114,16 @@ export function seedIfEmpty(){
       { id: 'l-lang-uz-mevalar', lang: 'uz', title: 'Mevalar', youtubeId: '6QNgOCio4Y4', words: ['olma','banan','uzum'], song: '/assets/audio/fruits_song.mp3' },
       { id: 'l-lang-uz-ranglar', lang: 'uz', title: 'Ranglar', youtubeId: 'XmzbaZQeNNI', words: ['qizil','ko\'k','yashil'], song: '/assets/audio/colors_song.mp3' },
       // Russian (updated per request)
-      { id: 'l-lang-ru-frukty', lang: 'ru', title: 'Фрукты', youtubeId: 'BlAmuUrvMYk', words: ['яблоко','банан','виноград'], song: '/assets/audio/fruits_song.mp3' },
-      { id: 'l-lang-ru-cveta', lang: 'ru', title: 'Цвета', youtubeId: 'm9Kv2x3jxec', words: ['красный','синий','зеленый'], song: '/assets/audio/colors_song.mp3' },
+      { id: 'l-lang-ru-frukty', lang: 'ru', title: 'Фрукты', youtubeId: 'BlAmuUrvMYk', words: ['яблоко','банан','виноград'], song: '/assets/audio/fruits_song.mp3', quiz: [
+        { prompt:'Что из этого фрукт?', options:['яблоко','машина','стул'], answer:'яблоко' },
+        { prompt:'Сколько бананов? 🍌🍌🍌', options:['2','3','4'], answer:'3' },
+        { prompt:'Выбери красный фрукт', options:['яблоко','виноград','салат'], answer:'яблоко' },
+      ] },
+      { id: 'l-lang-ru-cveta', lang: 'ru', title: 'Цвета', youtubeId: 'm9Kv2x3jxec', words: ['красный','синий','зеленый'], song: '/assets/audio/colors_song.mp3', quiz: [
+        { prompt:'Какого цвета небо?', options:['синий','красный','зелёный'], answer:'синий' },
+        { prompt:'Красный + жёлтый = ?', options:['оранжевый','фиолетовый','коричневый'], answer:'оранжевый' },
+        { prompt:'Что не цвет?', options:['треугольник','синий','розовый'], answer:'треугольник' },
+      ] },
     ],
     mathLessons: [
       { id: 'l-math-1', title: 'Counting Apples', examples: [{ text: '5 apples + 2 apples', visual: ['apple','apple','apple','apple','apple','apple','apple'] }] },
