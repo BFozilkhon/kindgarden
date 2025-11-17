@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { getLessons, saveLessonResult } from '../lib/localDB'
 import CharacterAnimator from '../components/CharacterAnimator'
@@ -12,15 +12,37 @@ export default function MovementExercise(){
   const active = moves.find(m=>m.id===activeId)
   const { currentKid } = useKid()
   const [done, setDone] = useState(false)
+  const [isSpeaking, setIsSpeaking] = useState(false)
   const actionLabel = (code)=> ({
     jump: t('movement.words.jump'),
     clap: t('movement.words.clap'),
     stretch: t('movement.words.stretch'),
     twist: t('movement.words.twist'),
+    spin: t('movement.words.spin'),
+    rightHandUp: t('movement.words.rightHandUp'),
+    leftHandUp: t('movement.words.leftHandUp'),
+    oneLeg: t('movement.words.oneLeg'),
+    toeTouch: t('movement.words.toeTouch'),
   }[code] || code)
+
+  useEffect(()=>{
+    if (!active) return
+    if (!isSpeaking) { window.speechSynthesis?.cancel(); return }
+    const speak = ()=>{
+      try {
+        const u = new SpeechSynthesisUtterance(actionLabel(active.frames[0]))
+        window.speechSynthesis?.cancel()
+        window.speechSynthesis?.speak(u)
+      } catch {}
+    }
+    speak()
+    const id = setInterval(speak, 2000)
+    return ()=>{ clearInterval(id); window.speechSynthesis?.cancel() }
+  }, [isSpeaking, active])
 
   const complete = ()=>{
     setDone(true)
+    setIsSpeaking(false)
     saveLessonResult(currentKid?.id, active?.id, { correct:1, incorrect:0, coins:3 })
   }
 
@@ -41,17 +63,18 @@ export default function MovementExercise(){
 
       <div className="bg-white rounded-3xl shadow p-6 flex flex-col items-center gap-4">
         <CharacterAnimator frames={active.frames} />
-        <button
-          className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[var(--primary)] text-white shadow"
-          onClick={()=>{
-            try{ const u = new SpeechSynthesisUtterance(actionLabel(active.frames[0])); window.speechSynthesis?.speak(u) } catch {}
-          }}
-        >
-          🔊 {actionLabel(active.frames[0])}
-        </button>
+        <div className="flex items-center gap-3">
+          <button
+            className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[var(--primary)] text-white shadow"
+            onClick={()=> setIsSpeaking(s=>!s)}
+            aria-pressed={isSpeaking}
+          >
+            {isSpeaking?'⏸':'▶'} {actionLabel(active.frames[0])}
+          </button>
+          <BigCTAButton onClick={complete} ariaLabel={t('movement.didIt')}>{t('movement.didIt')}</BigCTAButton>
+        </div>
       </div>
       <div className="text-slate-600">{t('movement.follow')}</div>
-      <BigCTAButton onClick={complete} ariaLabel={t('movement.didIt')}>{t('movement.didIt')}</BigCTAButton>
       {done && <div className="text-green-700 font-bold">{t('movement.greatJobCoins', { n: 3 })}</div>}
     </div>
   )

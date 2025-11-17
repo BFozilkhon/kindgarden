@@ -19,7 +19,7 @@ function randomInt(a,b){ return a + Math.floor(Math.random()*(b-a+1)) }
 
 export default function CompetitionGame(){
   const { t } = useTranslation('t')
-  const type = getHashParam('c') || 'fastMultiply'
+  const type = getHashParam('c') || 'addition'
   const { currentKid } = useKid()
   const [score, setScore] = useState(0)
   const [tLeft, setTLeft] = useState(120)
@@ -33,10 +33,21 @@ export default function CompetitionGame(){
   }, [tLeft])
 
   function makeQuestion(kind){
-    if (kind==='fastMultiply'){
-      const a = randomInt(1,9), b = randomInt(1,9), ans = a*b
-      const opts = shuffle([ans, ans+1, Math.max(0, ans-1)])
-      return { text:`${a} × ${b} = ?`, options: opts, correct: ans }
+    if (kind==='addition'){
+      // sums within 10
+      const a = randomInt(0,9)
+      const b = randomInt(0, 10 - a)
+      const ans = a + b
+      const opts = shuffle([ans, Math.max(0, ans-1), Math.min(10, ans+1)])
+      return { text:`${a} + ${b} = ?`, options: opts, correct: ans }
+    }
+    if (kind==='subtraction'){
+      // non-negative within 10
+      const a = randomInt(1,10)
+      const b = randomInt(0,a)
+      const ans = a - b
+      const opts = shuffle([ans, Math.max(0, ans-1), Math.min(10, ans+1)])
+      return { text:`${a} − ${b} = ?`, options: opts, correct: ans }
     }
     if (kind==='numberMatch'){
       const a = randomInt(1,9)
@@ -84,7 +95,7 @@ export default function CompetitionGame(){
         <p className="mb-3">{t('competitions.finalScore', { n: score })}</p>
         <div className="flex gap-2 justify-end">
           <button className="px-4 py-2 rounded-full bg-white shadow" onClick={back}>{t('misc.back')}</button>
-          <button className="px-4 py-2 rounded-full bg-[var(--primary)] text-white shadow" onClick={()=>{ setScore(0); setTLeft(30); setQ(makeQuestion(type)); setOpen(false) }}>{t('competitions.playAgain')}</button>
+          <button className="px-4 py-2 rounded-full bg-[var(--primary)] text-white shadow" onClick={()=>{ setScore(0); setTLeft(120); setQ(makeQuestion(type)); setOpen(false) }}>{t('competitions.playAgain')}</button>
         </div>
       </Modal>
     </div>

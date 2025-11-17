@@ -4,8 +4,12 @@ import { useTranslation } from 'react-i18next'
 export default function Competitions(){
   const { t } = useTranslation('t')
   const challenges = [
-    { key:'fastMultiply', icon:'⚡', title:t('competitions.fastMultiply'), desc:t('competitions.descFast'), tag:t('competitions.levelEasy') },
+    { key:'addition', icon:'➕', title:t('competitions.addition'), desc:t('competitions.descAdd'), tag:t('competitions.levelEasy') },
+    { key:'subtraction', icon:'➖', title:t('competitions.subtraction'), desc:t('competitions.descSub'), tag:t('competitions.levelEasy') },
     { key:'numberMatch', icon:'🏁', title:t('competitions.numberMatch'), desc:t('competitions.descMatch'), tag:t('competitions.levelMedium') },
+    { key:'imageTF', icon:'🖼️', title:t('competitions.imageTF'), desc:t('competitions.descTF'), tag:t('competitions.levelEasy'), route:'#/competition-tf' },
+    { key:'oddEven', icon:'🔢', title:t('competitions.oddEven'), desc:t('competitions.descOddEven'), tag:t('competitions.levelEasy'), route:'#/competition-odd-even' },
+    { key:'compare', icon:'⚖️', title:t('competitions.biggerSmaller'), desc:t('competitions.descCompare'), tag:t('competitions.levelEasy'), route:'#/competition-compare' },
   ]
   return (
     <div className="space-y-4">
@@ -20,7 +24,7 @@ export default function Competitions(){
                 <span className="px-3 py-1 rounded-full bg-amber-200 text-amber-900 text-sm">{c.tag}</span>
               </div>
               <p className="text-slate-600 mt-1">{c.desc}</p>
-              <a href={`#/competition?c=${c.key}`} className="inline-block mt-3"><BigCTAButton>{t('competitions.start')}</BigCTAButton></a>
+              <a href={c.route || `#/competition?c=${c.key}`} className="inline-block mt-3"><BigCTAButton>{t('competitions.start')}</BigCTAButton></a>
             </div>
           </div>
         ))}

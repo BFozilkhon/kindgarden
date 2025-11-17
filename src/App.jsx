@@ -13,6 +13,9 @@ import Profile from './pages/Profile'
 import Stats from './pages/Stats'
 import Competitions from './pages/Competitions'
 import CompetitionGame from './pages/CompetitionGame'
+import CompetitionTF from './pages/CompetitionTF'
+import CompetitionOddEven from './pages/CompetitionOddEven'
+import CompetitionCompare from './pages/CompetitionCompare'
 import { useKid } from './lib/useKid'
 
 const routes = {
@@ -25,6 +28,9 @@ const routes = {
   '/movement': MovementExercise,
   '/competitions': Competitions,
   '/competition': CompetitionGame,
+  '/competition-tf': CompetitionTF,
+  '/competition-odd-even': CompetitionOddEven,
+  '/competition-compare': CompetitionCompare,
   '/karaoke': Karaoke,
   '/cartoons': CartoonPlayer,
   '/stats': Stats,

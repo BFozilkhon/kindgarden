@@ -9,7 +9,7 @@
 const DB_KEY = 'kg_db'
 const RESET_ONCE_KEY = 'kg_reset_once'
 const SCHEMA_KEY = 'kg_schema_version'
-const SCHEMA_VERSION = '2'
+const SCHEMA_VERSION = '3'
 
 function getDb(){
   try {
@@ -132,6 +132,11 @@ export function seedIfEmpty(){
     movementExercises: [
       { id: 'l-move-1', title: 'Jump and Clap', frames: ['jump','clap','jump','clap'], languages: ['en','uz','ru'] },
       { id: 'l-move-2', title: 'Stretch and Twist', frames: ['stretch','twist','stretch','twist'], languages: ['en','uz','ru'] },
+      { id: 'l-move-3', title: 'Spin Around', frames: ['spin','spin','spin'], languages: ['en','uz','ru'] },
+      { id: 'l-move-4', title: 'Right Hand Up', frames: ['rightHandUp','rightHandUp'], languages: ['en','uz','ru'] },
+      { id: 'l-move-5', title: 'Left Hand Up', frames: ['leftHandUp','leftHandUp'], languages: ['en','uz','ru'] },
+      { id: 'l-move-6', title: 'Stand on One Leg', frames: ['oneLeg','oneLeg','oneLeg'], languages: ['en','uz','ru'] },
+      { id: 'l-move-7', title: 'Touch Your Toes', frames: ['toeTouch','toeTouch'], languages: ['en','uz','ru'] },
     ],
     coinsTransactions: {
       // kidId: [{ ts, amount, reason, lessonId }]

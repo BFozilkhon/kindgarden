@@ -12,7 +12,16 @@ export default function CharacterAnimator({ frames=['jump','clap'], speed=800 })
   return (
     <div className="w-full flex items-center justify-center">
       <div className="w-56 h-56 rounded-full bg-white shadow flex items-center justify-center text-5xl">
-        {frame==='jump'?'🦘':frame==='clap'?'👏':frame==='stretch'?'🤸':frame==='twist'?'🌀':'🙂'}
+        {frame==='jump'?'🦘'
+          :frame==='clap'?'👏'
+          :frame==='stretch'?'🤸'
+          :frame==='twist'?'🌀'
+          :frame==='spin'?'🔄'
+          :frame==='rightHandUp'?'✋'
+          :frame==='leftHandUp'?'🤚'
+          :frame==='oneLeg'?'🦩'
+          :frame==='toeTouch'?'🧘'
+          :'🙂'}
       </div>
       <button className="ml-4 px-3 py-2 rounded-full bg-white shadow" aria-pressed={paused} aria-label={paused? 'Play animation':'Pause animation'} onClick={()=>setPaused(p=>!p)}>{paused?'▶':'⏸'}</button>
     </div>
